@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Index | Jo Mako's Japanese Course</title>
+    <link rel="stylesheet" href="data/style.css">
+    <style>
+        /* Table interactions */
+        th { cursor: pointer; user-select: none; transition: background 0.2s; }
+        th:hover { background: #2a2b2b; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hero">
+        <h1>Jo Mako's Japanese Course</h1>
+        <p class="subtitle">Vocabulary Index</p>
+        <div class="top-nav">
+            <a href="index.html" class="nav-link">📚 Library</a>
+            <a href="vocabulary.html" class="nav-link active">📝 Vocabulary Index</a>
+        </div>
+    </div>
+</header>
+
+<main class="table-container">
+    <table id="vocabTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th onclick="sortTable('word')">Word ↕</th>
+                <th onclick="sortTable('type1')">Type 1 ↕</th>
+                <th onclick="sortTable('type2')">Type 2 ↕</th>
+                <th onclick="sortTable('frequency')">Frequency ↕</th>
+                <th onclick="sortTable('lesson')">Lesson ↕</th>
+            </tr>
+        </thead>
+        <tbody id="vocabBody"></tbody>
+    </table>
+</main>
+
+<footer>© Jo Mako's Japanese Course</footer>
+
+<script src="data/database.js"></script>
+<script>
+    let sortDirection = true;
+
+    // This single function now handles both rendering AND the links
+    function renderTable() {
+        const tbody = document.getElementById('vocabBody');
+        if (typeof VOCAB_DATA === 'undefined') {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">Database not found.</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = VOCAB_DATA.map((item, index) => {
+            // Ensure filename is correct (assuming item.lesson is "01 - Pokemon Fire Red")
+            // We append .html to it
+const fileName = item.lesson.endsWith('.html') ? item.lesson : `${item.lesson}.html`;
+const displayTitle = item.lesson.replace('.html', '').replace(/^\d+ - /, '');
+            
+            return `
+            <tr style="border-bottom: 1px solid #444;">
+                <td style="padding: 12px 15px; color: var(--muted);">${index + 1}</td>
+                <td style="padding: 12px 15px; font-weight: bold;">${item.word}</td>
+                <td style="padding: 12px 15px;">${item.type1 || '-'}</td>
+                <td style="padding: 12px 15px;">${item.type2 || '-'}</td>
+                <td style="padding: 12px 15px;">${item.frequency || '-'}</td>
+                <td style="padding: 12px 15px;">
+                    <a href="Pages/${encodeURIComponent(fileName)}" style="color: var(--accent); text-decoration: none;">
+                        ${displayTitle}
+                    </a>
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    function sortTable(key) {
+        sortDirection = !sortDirection;
+        VOCAB_DATA.sort((a, b) => {
+            let valA = a[key] || "";
+            let valB = b[key] || "";
+            let comparison = valA.toString().localeCompare(valB, undefined, {numeric: true});
+            return sortDirection ? comparison : -comparison;
+        });
+        renderTable(); // This now calls the correct, single version of renderTable
+    }
+
+    // Initial load
+    window.addEventListener('DOMContentLoaded', renderTable);
+</script>
+
+</body>
+</html>

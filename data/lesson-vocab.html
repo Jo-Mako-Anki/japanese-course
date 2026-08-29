@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Lesson Vocabulary</title>
+
+<link rel="stylesheet" href="data/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="hero">
+
+<h1 id="title">Lesson Vocabulary</h1>
+
+<div class="top-nav">
+    <a id="backToLesson" class="nav-link">⬅ Back to Lesson</a>
+    <a href="index.html" class="nav-link">📚 Library</a>
+    <a href="vocabulary.html" class="nav-link">📝 Vocabulary Index</a>
+</div>
+
+</div>
+
+</header>
+
+<main>
+
+<div class="table-container">
+
+<table id="vocabTable">
+
+<thead>
+
+<tr>
+<th>#</th>
+<th>Word</th>
+<th>Type</th>
+<th>Frequency</th>
+</tr>
+
+</thead>
+
+<tbody id="tbody">
+
+</tbody>
+
+</table>
+
+</div>
+
+</main>
+
+<script src="data/database.js"></script>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const lesson = params.get("lesson");
+
+document.getElementById("backToLesson").href =
+    `Pages/${encodeURIComponent(lesson)}`;
+
+const tbody = document.getElementById("tbody");
+
+const vocab = getWordsForLesson(lesson);
+
+vocab.forEach(v => {
+
+    tbody.innerHTML += `
+    <tr>
+        <td>${v.id}</td>
+        <td>${v.word}</td>
+        <td>${v.type1}</td>
+        <td>${v.frequency}</td>
+    </tr>
+    `;
+
+});
+
+</script>
+
+</body>
+
+</html>

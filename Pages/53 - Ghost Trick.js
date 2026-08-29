@@ -1,0 +1,56 @@
+window.lessonScenes = [
+
+{
+    type: "Summary",
+        intro: `
+        `
+},
+  
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (1).jpg" ,japanese: "よし、逃走　開始だ！", english: "Good. Now get running！"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (1).jpg" ,japanese: "…しばらく……　気を失っていたようだ…", english: "Must've been unconscious for a while..."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (2).jpg" ,japanese: "…イシキが、ハッキリしない…", english: "My head feels \"fuzzy,\" kind of like I'm swimming through darkness..."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (3).jpg" ,japanese: "…闇の中を泳ぐような感覚…", english: "When I came to, there was a woman standing there. A woman I don't know."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (4).jpg" ,japanese: "気がついたら、女が立っていた。知らない女だ…たぶん。", english: "At least... I don't think I know her."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (5).jpg" ,japanese: "そして、その横に、男がヒトリ。…銃を持っていた。", english: "And then there was a man with a gun."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (6).jpg" ,japanese: "やはり、知らない男だ…たぶん。", english: "I don't know him, either... Well, probably not, anyway."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (7).jpg" ,japanese: "…女が撃たれるのを黙って　見ているのは、主義に反する。", english: "Now, I'm not the kind of guy who can just stand back and watch a poor woman get shot..."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (8).jpg" ,japanese: "しかし。私には、どうしても　助けに行けない事情があった。", english: "But I have just one little problem..."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (9).jpg" ,japanese: "…私は、ひとあし先に死んでいた。", english: "I'm already dead myself."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (10).jpg" ,japanese: "これが、“私”。それはマチガイない。", english: "This has gotta be me. No question about that."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (11).jpg" ,japanese: "なんといっても…この場で　死んでいるのは、私だけなのだから。", english: "After all, do you see any other dead bodies lying around here?"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (12).jpg" ,japanese: "…あばよ", english: "So long, sister."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (13).jpg" ,japanese: "…彼女にはキノドクだが、私には、もうどうしようもない。", english: "I feel bad for her, sure. But what can I do?"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (14).jpg" ,japanese: "なんといっても、こうして死んでいるワケだし。", english: "I'm dead."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (15).jpg" ,japanese: "…そう思った、その瞬間…", english: "But just as I was thinking this..."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (16).jpg" ,japanese: "…のんびり死んでいる　場合ではございません…", english: "This is no time to be lolling around dead!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (17).jpg" ,japanese: "…あの方を救えるのは　アナタ様だけでございます。", english: "You're the only one who can save her!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (18).jpg" ,japanese: "な。なんだ、これは！（世界が…“変わった”…）", english: "Wh-What the...?! (The whole world just changed on me!)"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (19).jpg" ,japanese: "…ようこそ。《死者の世界》へ…", english: "Welcome to the Ghost World, the land of the dead."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (20).jpg" ,japanese: "だ、だれだ！（アタマの中に“声”が…！）", english: "(A voice in my head?!) Who are you?!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (21).jpg" ,japanese: "ごアイサツは、あとまわし。今は、あの方を助けるのです。", english: "No time for introductions now. You have to save her!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (22).jpg" ,japanese: "アナタ様の《チカラ》を　使えば…きっと、できるハズ。", english: "I know you can do it! All you have to do is use your powers."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (23).jpg" ,japanese: "なんだって…（私が…彼女を、助ける…？）", english: "Huh? (Me? Save her? Uh, how?)"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (24).jpg" ,japanese: "アナタ様の“亡きがら”を　ごらんください。", english: "Take a look at your corpse."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (25).jpg" ,japanese: "青く燃えるホノオ…それが、あなたに宿る《タマシイ》", english: "Do you see that blue flame? That's your soul."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (26).jpg" ,japanese: "そして、そのトナリで白く　輝いているのが…《コア》", english: "And do you see that bright white spot nearby? That's a core."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (27).jpg" ,japanese: "《コア》…だって？（コイツは…“シャダンキ”…か）", english: "A core...? (Hmm. Just looks like a railway crossing gate to me.)"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (28).jpg" ,japanese: "とにかく、やってみましょう。", english: "Look, the best way to understand is to just try it."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (29).jpg" ,japanese: "まず。アナタ様のタマシイに　“タッチ”してください。", english: "First of all, try touching your soul.Next, with your finger still on it, slide your soul across to connect it with the core."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (30).jpg" ,japanese: "…オメデトウございます。", english: "Congratulations!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (31).jpg" ,japanese: "これで、アナタ様は　シャダンキにとりつきました。", english: "Your soul has now possessed the crossing gate."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (32).jpg" ,japanese: "こ。この私が、シャダンキに…？", english: "So... what? Now I'm a crossing gate...?"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (33).jpg" ,japanese: "それでは。そのシャダンキで、彼女を助けるとしましょうか。", english: "Ahem. Now, then. Use the crossing gate to save the woman!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (34).jpg" ,japanese: "なんだって！　いったい、どうやって…", english: "What? But how?"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (35).jpg" ,japanese: "これから、ふたたび《時》が動き出します。…その瞬間。", english: "In a moment, time will start to flow normally again. That will be your chance."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (36).jpg" ,japanese: "オトコは、引き金を引く。オンナは、死ぬでしょう。", english: "Listen, when the man pulls the trigger, the woman dies, right?"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (37).jpg" ,japanese: "そうなる前に…アナタ様の《チカラ》を使うのです！", english: "So before that happens, you have to use your powers to stop it!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (38).jpg" ,japanese: "ま。待ってくれ！　まだ、ココロの準備が…", english: "H-Hey! Wait a second! I still don't know what you're talking about!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (39).jpg" ,japanese: "クックックッ…", english: "Heh heh."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (40).jpg" ,japanese: "ココロなど…準備のできる　モノではございませんよ。", english: "You'll see. You'll see."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (41).jpg" ,japanese: "それでは…《時》の流れが戻ります。", english: "Now, then. Time will start to flow again..."},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (42).jpg" ,japanese: "うわッ！", english: "Oof!"},
+{type: "Immersion",image: "../Files/Ghost Trick/Ghost Trick (43).jpg" ,japanese: "とまれ！", english: "Hold it!"},
+
+
+   
+ ];

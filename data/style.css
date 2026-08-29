@@ -1,0 +1,818 @@
+/* ==========================================
+   1. Variables
+========================================== */
+:root{
+    /* Colours */
+    --bg:#272828;
+    --panel:#323333;
+    --panel-hover:#3a3b3b;
+    --text:#BDC7C1;
+    --muted:#8a9590;
+    --accent:#3b82f6;
+    --highlight:#facc15;
+    /* Grammar */
+    --color-verb:#a5d6a7;
+    --color-adjective:#e48872;
+    --color-noun:#93a5d9;
+    --color-jodoushi:#a855f7;
+    --color-particle:#ffe082; 
+}
+/* ==========================================
+   2. Reset
+========================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:system-ui,-apple-system,sans-serif;
+}
+/* ==========================================
+   3. Typography
+========================================== */
+h1{
+    color:white;
+    font-size:clamp(2rem,5vw,3.5rem);
+    margin-bottom:8px;
+}
+.subtitle{
+    color:var(--muted);
+    line-height:1.5;
+}
+/* ==========================================
+   4. General Layout
+========================================== */
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(39,40,40,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #444;
+}
+.hero{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:24px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:14px;
+}
+/* ==========================================
+   11. Library Layout
+========================================== */
+.top-nav { 
+display: flex; 
+gap: 10px; 
+margin: 20px 0; 
+}
+body.lesson-view{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+}
+.filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+.filter-select {
+    flex: 1;
+    min-width: 220px;
+    padding: 14px;
+    border: 1px solid #444; /* Added border to match buttons */
+    border-radius: 12px;
+    background: #1f2020;
+    color: var(--text);
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.filter-select:hover {
+    background: var(--panel-hover);
+    border-color: var(--accent);
+}
+.filter-select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+.section-title{
+    margin:40px 0 18px;
+    padding:14px 20px;
+    background:#1f2020;
+    border-left:6px solid var(--accent);
+    border-radius:12px;
+    color:white;
+    font-size:1.5rem;
+    font-weight:700;
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.lesson { 
+display: block; 
+text-decoration: none; 
+color: inherit; 
+background: var(--panel); 
+border: 1px solid #444; 
+border-radius: 16px; 
+padding: 18px; 
+position:relative;
+overflow:hidden;
+}
+.lesson:hover { 
+background: var(--panel-hover); 
+border-color: var(--accent); 
+}
+.lesson.completed {
+    border: 2px solid #22c55e !important;
+}
+.lesson.completed::before {
+    content: "COMPLETED";
+    position: absolute;
+    top: 15px;
+    right: -30px; 
+    background: #22c55e;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 4px 30px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    pointer-events: none;
+    z-index: 10;
+}
+.lesson-header {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 20px; 
+    margin-bottom: 12px;
+}
+/* Base Tag Styling */
+.tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* Colorized Tag Variations */
+.tag.theory { background: #FF9999; color: #5C1E1E; }
+.tag.anime { background: #FFC0CB; color: #6b2f3a; }
+.tag.game { background: #87CEEB; color: #0f3a4a; }
+.tag.manga { background: #77DD77; color: #184d18; }
+/* ==========================================
+   Vocabulary Index + Table in Summary
+========================================== */
+.table-container{
+    width:100%;
+    overflow:hidden;
+    border:1px solid #444;
+    border-radius:16px;
+    background:var(--panel);
+}
+#vocabTable{
+    width:100%;
+    border-collapse:collapse; 
+}
+#vocabTable th{
+    background:#1f2020;
+    color:var(--accent);
+    text-align:center;
+    text-transform:uppercase;
+    padding:14px 16px;
+    border-bottom:1px solid #444;
+}
+#vocabTable td{
+    border-bottom:1px solid #444;
+}
+#vocabTable tbody tr:nth-child(even){
+    background:rgba(255,255,255,.03);
+}
+ #vocabTable tbody tr:hover{
+    background:rgba(255,255,255,.06);
+}
+/* ==========================================
+   5. Lesson Layout
+========================================== */
+/* ==========================================
+   5. Lesson Layout - Header Navigation
+========================================== */
+   .lesson-header-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 20px;
+      z-index: 1001;
+      background: rgba(30, 30, 30, 0.9);
+      display: flex;
+      gap: 20px;
+    }
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: #1f2020; 
+      padding: 10px 16px; 
+      border-radius: 10px; 
+      font-weight: 600; 
+      transition:color .2s;
+      cursor:pointer;
+    }
+.nav-link.active{
+    background:var(--panel);
+    color:white;
+    border:1px solid #666;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.nav-link:hover{
+color:var(--accent);
+}
+/* ==========================================
+   5. Lesson Layout - Slides
+========================================== */
+.slider-container{
+    position:relative;
+    flex:1;
+    width:100%;
+    overflow:hidden;
+    padding-top:66px;
+}
+.scene{
+    position:absolute;
+    inset:0;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:
+        transform .7s ease,
+        opacity .45s ease;
+}
+.scene.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateX(0);
+}
+.scene.prev{
+    transform:translateX(-25%);
+}
+.scene.next{
+    transform:translateX(25%);
+}
+/* ==========================================
+   5. Lesson Layout - Progress Bar
+========================================== */
+.progress-container{
+    position:fixed;
+    top:60px;
+    left:0;
+    width:100%;
+    height:6px;
+    background:#1f2020;
+    z-index:999;
+}
+#progressBar{
+    position:absolute;
+    inset:0 auto 0 0;
+    width:0%;
+    height:100%;
+    background:var(--accent);
+    transition:width .3s ease;
+}
+/*  ==========================================
+    6. Lesson Content - Summary Page
+========================================== */
+.summary-page{
+    margin:auto;
+    width:60%;
+}
+.summary-header{
+    color:white;
+    font-size:clamp(2rem,5vw,3.5rem);
+    margin-bottom:8px;
+}
+.summary-subtitle{
+    text-align:center;
+    font-size:48px;
+    color:var(--text-dim);
+    margin-bottom:20px;
+}
+.summary-divider{
+    width:100px;
+    height:3px;
+    background:var(--text-dim);
+    margin:20px auto;
+    border-radius:2px;
+}
+.summary-list{
+    list-style:none;
+    margin:40px auto 0;
+    padding:0;
+    width:fit-content;
+    text-align:left;
+}
+.summary-list li{
+    font-size:36px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+.summary-list li::before{
+    content:"•";
+    display:inline-block;
+    width:30px;
+}
+.summary-list .hl-verb{
+    color:var(--color-verb);
+}
+.summary-list .hl-adj{
+    color:var(--color-adjective);
+}
+.summary-list .hl-noun{
+    color:var(--color-noun);
+}
+.summary-list li {
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+.summary-list li:hover {
+    opacity: .75;
+}
+.summary-scene{
+    position:absolute;
+    inset:0;
+    display:block;
+    overflow-y:auto;
+    padding:90px 0 80px;
+    justify-content:initial;
+    align-items:initial;
+}
+.summary-intro{
+    width:90%;
+    max-width:1300px;
+    margin:20px auto 30px;
+    text-align:center;
+}
+.summary-intro h1{
+    margin:20px 0 15px;
+}
+.summary-intro p{
+    max-width:1300px;
+    margin:10px auto;
+    line-height:1.6;
+}
+.summary-layout{
+    width:90%;
+    margin:0 auto 60px;
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+}
+.summary-left{
+    width:40%;
+}
+.summary-right{
+    width:60%;
+}
+.summary-cover{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+.summary-left p{
+    margin-bottom:15px;
+    line-height:1.6;
+}
+.summary-layout.no-cover{
+    display:block;
+}
+.summary-layout.no-cover .summary-right{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+
+
+ /* ==========================================
+    6. Lesson Content - Vocab Cards
+========================================== */
+ .vocab-card{
+    width:min(750px,90%);
+    margin:auto;
+    padding:18px;
+    background:#2a2a2a;
+    border:1px solid #333;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.3);
+}
+.Morph{
+    color:#e48872;
+    font-size:42px;
+    font-weight:700;
+}
+.definition{
+    margin-top:10px;
+    font-size:24px;
+    font-weight:bold;
+}
+.meta{
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 3px 12px;
+  background-color: rgba(228, 136, 114, 0.15); 
+  color: #e48872;
+  border: 1px solid rgba(228, 136, 114, 0.4);
+  border-radius: 50px;
+  margin: 8px 0;
+}
+.reading{
+    margin-top:28px;
+    font-size:32px;
+    color:#bbdefb;
+}
+.translation{
+    margin-top:8px;
+    font-size:20px;
+    color:#a5d6a7;
+    font-style:italic;
+}
+.vocab-card img{
+    max-width:95%;
+    max-height:35vh;
+    margin:25px auto;
+    border-radius:12px;
+}
+.lesson-audio{
+    margin-top:1px;
+}
+/* ==========================================
+   Grammar Pages
+========================================== */
+.grammar-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.centered-header-group {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.centered-header-group h2 {
+    font-size: 80px;
+    margin: 0;
+}
+.subheader {
+    font-size: 40px;
+    margin-top: 10px;
+    font-family: "Noto Sans JP", sans-serif;
+}
+/* ==========================================
+   Example Card
+========================================== */
+.example-card {
+    background: var(--slide-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px 40px;
+    text-align: center;
+    display: inline-block;
+    min-width: 400px;
+}
+.ex-jp {
+    font-size: 100px;
+    margin: 0;
+    letter-spacing: 4px;
+}
+.ex-en {
+    font-size: 36px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-top: 15px;
+}
+.Note {
+    max-width: 700px;
+    margin: 14px auto 18px;
+    padding: 10px 16px;
+    font-size: 15px;
+    opacity: .9;
+    line-height: 1.5;
+    color: #cfcfcf;
+    background: rgba(255,255,255,.05);
+    border-bottom: 4px solid #6aa8ff;
+    border-radius: 8px;
+    text-align: left;
+    font-style: italic;
+}
+.Note b {
+    color: #ffffff;
+    font-weight: 600;
+}
+.lesson-audio {
+    display: block;
+    margin: 18px auto 0;
+}
+/* ==========================================
+   Grammar Colours
+========================================== */
+.hl-verb {
+    color: #a5d6a7;
+}
+.hl-adj {
+    color: #e48872;
+}
+.hl-noun {
+    color: #93a5d9;
+}
+.hl-da {
+    color: #a855f7;
+}
+.hl-particle{
+    color:#facc15;
+}
+.hl-affix{
+    color:#bbdefb;
+}
+.hl-adverb{
+    color:#ffb74d;
+}
+.v-fact::before{
+    content:"•";
+    color:var(--color-verb);
+}
+.a-fact::before{
+    content:"•";
+    color:var(--color-adjective);
+    margin-right:15px;
+}
+.n-fact::before{
+    content:"•";
+    color:var(--color-noun);
+    margin-right:15px;
+}
+.fact-list /* the container */ {
+    list-style:none;
+    padding:0;
+    margin:0 auto;
+    width:100%;
+    max-width:1600px;
+}
+.fact-list li  /* each fact */ {
+    font-size:20px;
+    margin:14px;
+    display:flex;
+    align-items:flex-start;
+    gap:5px;
+    padding:14px 22px;
+    background:rgba(255,255,255,.03);
+    border-radius:16px;
+}
+/* ==========================================
+   Lesson - Pronouns
+========================================== */
+        /* Simple structural diagram layout */
+        .kosado-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+            width: 100%;
+            max-width: 1400px;
+        }
+        .kosado-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .kosado-box h4 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .kosado-box p {
+            margin: 5px 0;
+            font-size: 20px;
+            color: var(--text-dim);
+        }
+.k-fact::before{
+    content:"•";
+    color:var(--color-noun);
+    margin-right:15px;
+    flex-shrink:0;
+}
+/* ==========================================
+   Lesson - Particles
+========================================== */
+.lesson-particles-toc-header{
+    font-size:24px;
+    color:var(--color-adjective);
+    margin:0 0 10px;
+    padding-bottom:5px;
+}
+
+/* ==========================================
+   Lesson - Word Order
+========================================== */
+
+.lesson-word-order-title{
+    font-size:72px;
+    color:var(--accent);
+}
+
+.lesson-word-order-subtitle{
+    font-size:36px;
+    color:#fff;
+}
+
+.lesson-word-order{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.lesson-word-order-subject{
+    width:240px;
+    left:60px;
+
+    background:rgba(100,181,246,.10);
+    border-color:var(--color-blue);
+    color:var(--color-blue);
+
+    font-size:34px;
+}
+
+.lesson-word-order-verb{
+    width:240px;
+    left:340px;
+
+    background:rgba(129,199,132,.10);
+    border-color:var(--color-green);
+    color:var(--color-green);
+
+    font-size:34px;
+}
+
+.lesson-word-order-indirect{
+    width:240px;
+    left:620px;
+
+    background:rgba(100,181,246,.10);
+    border-color:var(--color-blue);
+    color:var(--color-blue);
+
+    font-size:34px;
+}
+
+.lesson-word-order-direct{
+    width:240px;
+    left:900px;
+
+    background:rgba(100,181,246,.10);
+    border-color:var(--color-blue);
+    color:var(--color-blue);
+
+    font-size:34px;
+}
+
+.lesson-word-order-meaning{
+    font-size:30px;
+}
+        
+        
+
+/* ==========================================
+   7. Lesson Text
+========================================== */
+.Japanese{
+    margin:20px 0 10px;
+    font-size:32px;
+    font-family:serif;
+}
+.English{
+    font-size:24px;
+    color:#64748b;
+    opacity:0;
+    cursor:help;
+    transition:opacity .3s;
+}
+.English.revealed{
+    opacity:1;
+    color:var(--text);
+}
+/* ==========================================
+   Highlight
+========================================== */
+.highlight{
+    color:var(--highlight);
+    font-weight:600;
+    border-bottom:2px solid rgba(250,204,21,.3);
+}
+body.no-highlights .highlight{
+    color:inherit !important;
+    font-weight:inherit !important;
+    border-bottom:none !important;
+}
+/* ==========================================
+   Images
+========================================== */
+.zoomable{
+    display:block;
+    max-width:95%;
+    max-height:45vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    margin:20px auto;
+    border-radius:12px;
+}
+img.zoomed{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(1.75);
+    max-width:90vw;
+    max-height:90vh;
+    width:auto;
+    height:auto;
+    z-index:9999;
+    cursor:zoom-out;
+    box-shadow:0 12px 40px rgba(0,0,0,.7);
+}
+.img-group{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:20px auto;
+}
+.img-group .zoomable{
+    flex:1 1 45%;
+    max-width:48%;
+    max-height:45vh;
+    object-fit:contain;
+    margin:0;
+}
+/* ==========================================
+   Lesson Controls
+========================================== */
+.controls {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+background:var(--panel);
+    border-top: 1px solid #444;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1000;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.controls .btn {
+    background: #1f2020;
+    color: var(--text);
+    border: 1px solid #444;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.controls .btn:hover {
+    background: var(--panel-hover);
+    border-color: var(--accent);
+}
+.controls .slide-select {
+    background: #1f2020;
+    color: var(--text);
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}

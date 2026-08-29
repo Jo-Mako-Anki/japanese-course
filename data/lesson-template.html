@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../data/style.css">
+</head>
+
+<body class="lesson-view">
+
+<header class="lesson-header-nav">
+    <a href="../index.html" class="nav-link">📚 Library</a>
+    <a href="../vocabulary.html" class="nav-link">📝 Vocabulary Index</a>
+    <a href="#" id="lessonSummaryLink" class="nav-link">📄 Summary</a>
+    <a href="#" id="lessonVocabularyLink" class="nav-link">📖 Vocabulary</a>
+    <a href="#" id="lessonImmersionLink" class="nav-link">🎮 Immersion</a>
+</header>
+
+<div class="progress-container">
+    <div id="progressBar"></div>
+</div>
+
+<div class="slider-container" id="slider">
+</div>
+
+<div class="controls">
+    <button class="btn" id="startBtn">Start</button>
+    <button class="btn" id="prevBtn">PREV</button>
+    <button class="btn" id="toggleHighlights">Highlight ON</button>
+    <button class="btn" id="toggleEnglish">English OFF</button>
+    <select class="slide-select" id="jumpToSlide"></select>
+    <button class="btn" id="nextBtn">NEXT</button>
+</div>
+
+<script src="../data/database.js"></script>
+<script src="../data/lesson.js"></script>
+
+</body>
+</html>
